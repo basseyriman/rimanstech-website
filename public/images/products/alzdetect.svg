@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#171918"/>
+  <circle cx="400" cy="280" r="120" stroke="#8A9C8D" stroke-width="1" opacity="0.4"/>
+  <circle cx="400" cy="280" r="80" stroke="#8A9C8D" stroke-width="1" opacity="0.3"/>
+  <circle cx="400" cy="280" r="40" fill="#183C32" opacity="0.5"/>
+  <rect x="120" y="80" width="200" height="140" rx="8" fill="#0C0D0C" stroke="#2A2D2B"/>
+  <rect x="140" y="100" width="160" height="8" rx="2" fill="#183C32" opacity="0.6"/>
+  <rect x="140" y="120" width="120" height="6" rx="2" fill="#2A2D2B"/>
+  <rect x="140" y="140" width="140" height="60" rx="4" fill="#183C32" opacity="0.2"/>
+  <text x="400" y="520" text-anchor="middle" fill="#50534F" font-family="system-ui" font-size="14" letter-spacing="0.1em">ALZDETECT  MRI ANALYSIS INTERFACE</text>
+</svg>

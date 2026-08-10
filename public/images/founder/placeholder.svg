@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 533" fill="none">
+  <rect width="400" height="533" fill="#E5EAE5"/>
+  <rect x="60" y="80" width="280" height="320" rx="8" fill="#DDDCD6"/>
+  <circle cx="200" cy="220" r="60" fill="#858983" opacity="0.3"/>
+  <rect x="120" y="420" width="160" height="12" rx="2" fill="#858983" opacity="0.4"/>
+  <rect x="140" y="445" width="120" height="8" rx="2" fill="#858983" opacity="0.3"/>
+  <text x="200" y="490" text-anchor="middle" fill="#858983" font-family="system-ui" font-size="11">Professional Portrait</text>
+</svg>

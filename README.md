@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RimansTech Industries Website
+
+Premium corporate website for [RimansTech Industries](https://rimanstech.com) — AI and software development company.
+
+## Stack
+
+- **Next.js 16** (App Router)
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Framer Motion**
+- **OpenAI** (AI Assistant)
+- **Resend** (email enquiries)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|----------|-------------|
+| `OPENAI_API_KEY` | Powers the RimansTech AI Assistant |
+| `RESEND_API_KEY` | Sends project enquiry emails |
+| `CONTACT_EMAIL` | Recipient for enquiries (default: support@rimanstech.com) |
+| `EMAIL_FROM` | Sender address for Resend |
+| `NEXT_PUBLIC_SITE_URL` | Site URL for SEO/sitemap |
 
-## Learn More
+Without API keys, the site runs with graceful fallbacks — the chatbot shows a helpful offline message and enquiries are logged to the console in development.
 
-To learn more about Next.js, take a look at the following resources:
+## Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/` — Homepage (14 sections)
+- `/start-a-project` — Project enquiry form
+- `/services` — Service capabilities
+- `/products` — RimansTech products
+- `/industries` — Industry areas
+- `/company` — About RimansTech
+- `/contact` — Contact options
+- `/research` — RimansTech Labs
+- `/insights` — News and articles
+- `/work/[slug]` — Case studies
+- `/privacy`, `/terms`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## AI Assistant
 
-## Deploy on Vercel
+Floating chat widget powered by `/api/chat`. Includes lead generation flow and chat-to-enquiry conversion via `/api/enquiry`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Optimised for [Vercel](https://vercel.com):
+
+```bash
+npm run build
+```
+
+## License
+
+Private — RimansTech Industries.
