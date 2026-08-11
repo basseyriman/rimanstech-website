@@ -28,8 +28,8 @@ export const products: Product[] = [
     externalUrl: "https://youngaiexplorers.net",
     image: "/images/products/young-ai-explorers-book.png",
     imageAlt: "Young AI Explorers book cover",
-    imageFit: "contain",
-    imageBg: "porcelain",
+    imageFit: "cover",
+    imageBg: "obsidian",
   },
   {
     id: "ai-quest",

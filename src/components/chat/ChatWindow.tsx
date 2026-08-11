@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { useChat } from "./ChatProvider";
 import { SUGGESTED_PROMPTS } from "@/lib/chat/system-prompt";
 import { EnquiryCapture } from "./EnquiryCapture";
+import { ChatMessageContent } from "./ChatMessageContent";
 import { trackEvent } from "@/lib/analytics";
 
 export function ChatWindow() {
@@ -100,7 +101,7 @@ export function ChatWindow() {
                 : "bg-assistant-bg text-carbon"
             )}
           >
-            {msg.content}
+            <ChatMessageContent content={msg.content} role={msg.role} />
           </div>
         ))}
 

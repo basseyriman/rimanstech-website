@@ -51,10 +51,8 @@ export const caseStudies: CaseStudy[] = [
       "Young AI Explorers provides a structured pathway for younger learners to understand AI concepts, supporting both classroom and independent learning.",
     image: "/images/products/young-ai-explorers-book.png",
     imageAlt: "Young AI Explorers book",
-    imageFit: "contain",
-    imageBg: "porcelain",
-    cardImageFit: "cover",
-    cardImageBg: "obsidian",
+    imageFit: "cover",
+    imageBg: "obsidian",
     href: "https://youngaiexplorers.net",
   },
   {
