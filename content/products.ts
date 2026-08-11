@@ -26,7 +26,7 @@ export const products: Product[] = [
       "Young AI Explorers combines educational content, digital learning and hands-on resources to make AI understandable and engaging for younger learners — including the Young AI Explorers book, a digital platform and STEM outreach.",
     cta: { label: "Explore Young AI Explorers", href: "/work/young-ai-explorers" },
     externalUrl: "https://youngaiexplorers.net",
-    image: "/images/products/young-ai-explorers-book-cutout.png",
+    image: "/images/products/young-ai-explorers-book.png",
     imageAlt: "Young AI Explorers book cover",
     imageFit: "contain",
     imageBg: "porcelain",
