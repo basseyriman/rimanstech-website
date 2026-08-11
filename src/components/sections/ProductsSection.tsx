@@ -55,7 +55,7 @@ export function ProductsSection() {
                   </div>
                 </div>
                 <div
-                  className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-border-light bg-ivory ${index % 2 === 1 ? "lg:order-1" : ""}`}
+                  className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-border-light bg-page ${index % 2 === 1 ? "lg:order-1" : ""}`}
                 >
                   <Image
                     src={product.image}

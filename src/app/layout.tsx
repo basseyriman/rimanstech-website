@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import { Instrument_Serif } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ChatProvider } from "@/components/chat/ChatProvider";
 import { defaultMetadata } from "@content/seo";
 import { SITE_URL } from "@/lib/utils";
@@ -22,7 +23,11 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   ...defaultMetadata,
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/brand/rimanstech-monogram.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -41,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${geistSans.variable} ${instrumentSerif.variable} h-full scroll-smooth antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <script
@@ -48,19 +54,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className="flex min-h-full flex-col bg-ivory text-carbon">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-forest focus:px-4 focus:py-2 focus:text-white"
-        >
-          Skip to content
-        </a>
-        <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <ChatProvider />
+      <body className="flex min-h-full flex-col">
+        <ThemeProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-forest focus:px-4 focus:py-2 focus:text-white"
+          >
+            Skip to content
+          </a>
+          <Header />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <ChatProvider />
+        </ThemeProvider>
       </body>
     </html>
   );

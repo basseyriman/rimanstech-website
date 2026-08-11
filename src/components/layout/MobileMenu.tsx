@@ -30,7 +30,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
       />
       <div
         className={cn(
-          "absolute top-0 right-0 h-full w-full max-w-sm bg-ivory shadow-xl transition-transform duration-300 ease-out",
+          "absolute top-0 right-0 h-full w-full max-w-sm bg-page shadow-xl transition-transform duration-300 ease-out",
           open ? "translate-x-0" : "translate-x-full"
         )}
         role="dialog"
@@ -38,7 +38,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         aria-label="Navigation menu"
       >
         <div className="flex h-16 items-center justify-between border-b border-border-light px-5">
-          <Logo variant="dark" />
+          <Logo variant="auto" />
           <button
             type="button"
             onClick={onClose}

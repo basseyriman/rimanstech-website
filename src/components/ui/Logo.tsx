@@ -1,18 +1,32 @@
 "use client";
 
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface LogoProps {
-  variant?: "dark" | "light";
+  variant?: "dark" | "light" | "auto";
   className?: string;
   monogram?: boolean;
 }
 
-export function Logo({ variant = "dark", className, monogram = false }: LogoProps) {
-  const textColor = variant === "dark" ? "#101110" : "#F5F3EE";
-  const subColor = variant === "dark" ? "#50534F" : "#9A9D98";
-  const accentColor = variant === "dark" ? "#183C32" : "#8A9C8D";
+export function Logo({ variant = "auto", className, monogram = false }: LogoProps) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  const effectiveVariant =
+    variant === "auto"
+      ? mounted && resolvedTheme === "dark"
+        ? "light"
+        : "dark"
+      : variant;
+
+  const textColor = effectiveVariant === "dark" ? "#101110" : "#F5F3EE";
+  const subColor = effectiveVariant === "dark" ? "#50534F" : "#9A9D98";
+  const accentColor = effectiveVariant === "dark" ? "#183C32" : "#8A9C8D";
 
   if (monogram) {
     return (
@@ -23,12 +37,17 @@ export function Logo({ variant = "dark", className, monogram = false }: LogoProp
         className={cn("h-full w-full", className)}
         aria-hidden="true"
       >
-        <rect width="40" height="40" rx="8" fill={variant === "dark" ? "#183C32" : "#F5F3EE"} />
+        <rect
+          width="40"
+          height="40"
+          rx="8"
+          fill={effectiveVariant === "dark" ? "#183C32" : "#F5F3EE"}
+        />
         <text
           x="20"
           y="26"
           textAnchor="middle"
-          fill={variant === "dark" ? "#F5F3EE" : "#183C32"}
+          fill={effectiveVariant === "dark" ? "#F5F3EE" : "#183C32"}
           fontFamily="system-ui, sans-serif"
           fontSize="16"
           fontWeight="600"

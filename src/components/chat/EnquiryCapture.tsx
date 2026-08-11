@@ -52,7 +52,7 @@ export function EnquiryCapture({ messages }: EnquiryCaptureProps) {
 
   if (step === "success") {
     return (
-      <div className="mt-4 rounded-xl border border-border-light bg-ivory p-4">
+      <div className="mt-4 rounded-xl border border-border-light bg-page p-4">
         <p className="text-sm font-medium text-carbon">Enquiry sent.</p>
         <p className="mt-2 text-sm text-graphite">
           Thank you. We&apos;ll review your conversation and get back to you.
@@ -63,7 +63,7 @@ export function EnquiryCapture({ messages }: EnquiryCaptureProps) {
 
   if (step === "consent") {
     return (
-      <div className="mt-4 rounded-xl border border-border-light bg-ivory p-4">
+      <div className="mt-4 rounded-xl border border-border-light bg-page p-4">
         <p className="text-sm text-graphite">
           I can send a summary of this conversation to the RimansTech team so they
           can follow up with you.
@@ -89,7 +89,7 @@ export function EnquiryCapture({ messages }: EnquiryCaptureProps) {
   }
 
   return (
-    <div className="mt-4 space-y-3 rounded-xl border border-border-light bg-ivory p-4">
+    <div className="mt-4 space-y-3 rounded-xl border border-border-light bg-page p-4">
       <input
         type="text"
         placeholder="Your name *"

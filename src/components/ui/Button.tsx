@@ -16,7 +16,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   primary:
     "bg-forest text-white hover:bg-forest-hover border border-transparent",
   secondary:
-    "bg-transparent border border-[#BFC3BC] text-carbon hover:border-forest hover:text-forest",
+    "bg-transparent border border-secondary-border text-carbon hover:border-forest hover:text-forest",
   ghost: "bg-transparent text-carbon hover:text-forest border border-transparent",
 };
 

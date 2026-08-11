@@ -30,7 +30,7 @@ export default function ResearchPage() {
             {researchTopics.map((topic) => (
               <div
                 key={topic}
-                className="rounded-lg border border-border-light bg-ivory px-5 py-4 text-sm text-graphite"
+                className="rounded-lg border border-border-light bg-page px-5 py-4 text-sm text-graphite"
               >
                 {topic}
               </div>

@@ -119,7 +119,7 @@ export function ChatWindow() {
                   trackEvent("suggested_question_clicked");
                   sendMessage(prompt);
                 }}
-                className="rounded-lg border border-border-light bg-ivory px-3 py-2 text-xs font-medium text-graphite transition-colors hover:border-sage hover:text-carbon"
+                className="rounded-lg border border-border-light bg-page px-3 py-2 text-xs font-medium text-graphite transition-colors hover:border-sage hover:text-carbon"
               >
                 {prompt}
               </button>
@@ -156,7 +156,7 @@ export function ChatWindow() {
             rows={1}
             maxLength={2000}
             disabled={isLoading}
-            className="max-h-24 min-h-[44px] flex-1 resize-none rounded-lg border border-border-light bg-ivory px-3 py-2.5 text-sm text-carbon placeholder:text-stone focus:border-forest focus:outline-none"
+            className="max-h-24 min-h-[44px] flex-1 resize-none rounded-lg border border-border-light bg-page px-3 py-2.5 text-sm text-carbon placeholder:text-stone focus:border-forest focus:outline-none"
           />
           <button
             type="button"

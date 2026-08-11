@@ -71,7 +71,7 @@ export default function ServicesPage() {
             {technologies.map((tech) => (
               <span
                 key={tech}
-                className="rounded-lg border border-border-light bg-ivory px-4 py-2 text-sm text-graphite"
+                className="rounded-lg border border-border-light bg-page px-4 py-2 text-sm text-graphite"
               >
                 {tech}
               </span>

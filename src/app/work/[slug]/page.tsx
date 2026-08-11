@@ -81,7 +81,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               {study.technology.map((tech) => (
                 <li
                   key={tech}
-                  className="rounded-lg border border-border-light bg-ivory px-3 py-1.5 text-sm text-graphite"
+                  className="rounded-lg border border-border-light bg-page px-3 py-1.5 text-sm text-graphite"
                 >
                   {tech}
                 </li>

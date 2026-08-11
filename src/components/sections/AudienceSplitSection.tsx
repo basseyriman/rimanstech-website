@@ -8,7 +8,7 @@ export function AudienceSplitSection() {
       <Container>
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
           <FadeIn>
-            <div className="flex h-full flex-col rounded-xl border border-border-light bg-ivory p-8 md:p-10 lg:p-12">
+            <div className="flex h-full flex-col rounded-xl border border-border-light bg-page p-8 md:p-10 lg:p-12">
               <p className="text-xs font-medium tracking-[0.12em] text-stone uppercase">
                 For Founders
               </p>
@@ -27,7 +27,7 @@ export function AudienceSplitSection() {
           </FadeIn>
 
           <FadeIn delay={0.15}>
-            <div className="flex h-full flex-col rounded-xl border border-border-light bg-ivory p-8 md:p-10 lg:p-12">
+            <div className="flex h-full flex-col rounded-xl border border-border-light bg-page p-8 md:p-10 lg:p-12">
               <p className="text-xs font-medium tracking-[0.12em] text-stone uppercase">
                 For Businesses
               </p>

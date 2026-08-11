@@ -16,7 +16,7 @@ export function InsightsSection() {
             <RevealItem key={item.slug}>
               <Link
                 href="/insights"
-                className="group block h-full rounded-xl border border-border-light bg-ivory p-6 transition-colors hover:border-sage/40 md:p-8"
+                className="group block h-full rounded-xl border border-border-light bg-page p-6 transition-colors hover:border-sage/40 md:p-8"
               >
                 <p className="text-xs font-medium tracking-[0.12em] text-stone uppercase">
                   {item.category}

@@ -10,7 +10,7 @@ import { HeroVisual } from "./HeroVisual";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-64px)] bg-ivory md:min-h-[calc(100vh-70px)] lg:min-h-[760px] lg:min-h-[calc(100vh-76px)]">
+    <section className="relative min-h-[calc(100vh-64px)] bg-page md:min-h-[calc(100vh-70px)] lg:min-h-[760px] lg:min-h-[calc(100vh-76px)]">
       <Container size="shell" className="grid items-end gap-10 pt-28 pb-16 lg:grid-cols-2 lg:gap-16 lg:pt-36 lg:pb-24">
         <div className="max-w-[640px]">
           <FadeIn>

@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --ivory: #f5f3ee;
+  --page-bg: #f5f3ee;
   --porcelain: #faf9f6;
   --carbon: #101110;
   --graphite: #50534f;
@@ -17,10 +20,28 @@
   --brass: #a78c5d;
   --footer-secondary: #9a9d98;
   --assistant-bg: #eceee9;
+  --secondary-border: #bfc3bc;
+}
+
+.dark {
+  color-scheme: dark;
+  --page-bg: #0c0d0c;
+  --porcelain: #171918;
+  --carbon: #f5f3ee;
+  --graphite: #b0b3ad;
+  --stone: #858983;
+  --obsidian: #121312;
+  --charcoal: #1e201f;
+  --border-light: #2a2d2b;
+  --border-dark: #3a3d3b;
+  --accent-subtle: #1a221e;
+  --assistant-bg: #222522;
+  --secondary-border: #4a4e4b;
 }
 
 @theme inline {
   --color-ivory: var(--ivory);
+  --color-page: var(--page-bg);
   --color-porcelain: var(--porcelain);
   --color-carbon: var(--carbon);
   --color-graphite: var(--graphite);
@@ -36,6 +57,7 @@
   --color-brass: var(--brass);
   --color-footer-secondary: var(--footer-secondary);
   --color-assistant-bg: var(--assistant-bg);
+  --color-secondary-border: var(--secondary-border);
   --font-sans: var(--font-geist-sans);
   --font-serif: var(--font-instrument-serif);
 }
@@ -51,11 +73,12 @@ html {
 }
 
 body {
-  background: var(--ivory);
+  background: var(--page-bg);
   color: var(--carbon);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 @media (min-width: 1024px) {
@@ -93,4 +116,8 @@ body {
 
 .image-editorial {
   filter: saturate(0.88) contrast(1.04);
+}
+
+.dark .image-editorial {
+  filter: saturate(0.82) contrast(1.06) brightness(0.92);
 }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none" role="img" aria-label="RimansTech RT monogram">
+  <title>RimansTech Monogram</title>
+  <!-- RT monogram for app icon, favicon and small digital use -->
+  <rect width="160" height="160" rx="32" fill="#183C32"/>
+  <text x="80" y="104" text-anchor="middle" fill="#F5F3EE" font-family="Geist, Inter, system-ui, -apple-system, sans-serif" font-size="64" font-weight="600" letter-spacing="-0.02em">RT</text>
+</svg>

@@ -40,7 +40,7 @@ interface SectionProps {
 }
 
 const bgClasses = {
-  ivory: "bg-ivory",
+  ivory: "bg-page",
   porcelain: "bg-porcelain",
   obsidian: "bg-obsidian text-ivory",
   accent: "bg-accent-subtle",

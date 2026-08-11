@@ -16,7 +16,7 @@ export function ProcessSection() {
               {processSteps.map((step, index) => (
                 <RevealItem key={step.number}>
                   <div className="relative flex gap-6 md:gap-10 md:pb-12 lg:gap-12">
-                    <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border-light bg-ivory md:h-12 md:w-12">
+                    <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border-light bg-page md:h-12 md:w-12">
                       <span className="text-xs font-medium text-forest">{step.number}</span>
                     </div>
                     <div className={`pb-8 md:flex-1 ${index === processSteps.length - 1 ? "md:pb-0" : ""}`}>
