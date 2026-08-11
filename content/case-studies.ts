@@ -23,8 +23,9 @@ export const caseStudies: CaseStudy[] = [
     ],
     outcome:
       "AlzDetect demonstrates how advanced computer vision and explainable AI can be combined in a decision-support research platform. It is available at alzdetect.live for research exploration.",
-    image: "/images/products/alzdetect.svg",
-    imageAlt: "AlzDetect platform interface",
+    image: "/images/products/master_alz_analysis.png",
+    imageAlt: "AlzDetect platform interface showing MRI analysis results",
+    imageFit: "contain",
     href: "https://alzdetect.live",
   },
   {
@@ -47,8 +48,10 @@ export const caseStudies: CaseStudy[] = [
     ],
     outcome:
       "Young AI Explorers provides a structured pathway for younger learners to understand AI concepts, supporting both classroom and independent learning.",
-    image: "/images/products/young-ai-explorers.svg",
-    imageAlt: "Young AI Explorers educational programme",
+    image: "/images/products/young-ai-explorers-book-cutout.png",
+    imageAlt: "Young AI Explorers book",
+    imageFit: "contain",
+    href: "https://youngaiexplorers.net",
   },
   {
     slug: "ai-quest",
@@ -69,8 +72,16 @@ export const caseStudies: CaseStudy[] = [
     ],
     outcome:
       "AI Quest transforms complex AI lifecycle concepts into engaging gameplay, making it suitable for workshops, classrooms and informal learning environments.",
-    image: "/images/products/ai-quest.svg",
-    imageAlt: "AI Quest card game",
+    image: "/images/products/premium_game_box.png",
+    imageAlt: "AI Quest premium game box",
+    video: "/images/products/ai-quest-demo.mp4",
+    imageFit: "cover",
+    gallery: [
+      {
+        src: "/images/products/ai-quest-wood-cubes.jpeg",
+        alt: "AI Quest wooden resource cubes used in gameplay",
+      },
+    ],
   },
 ];
 

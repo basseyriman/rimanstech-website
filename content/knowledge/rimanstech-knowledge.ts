@@ -20,7 +20,7 @@ RimansTech works with founders and organisations to transform ideas, operational
 
 ### Own Products
 1. **AlzDetect** — AI-assisted brain MRI analysis platform exploring Alzheimer's disease stage classification using Vision Transformers and explainable AI. Available at https://alzdetect.live. This is a research and decision-support platform — NOT a clinical diagnostic tool and NOT regulatory approved.
-2. **Young AI Explorers** — Educational programme including a book, digital platform and STEM outreach making AI accessible to younger learners.
+2. **Young AI Explorers** — Educational programme including a book, digital platform and STEM outreach making AI accessible to younger learners. Available at https://youngaiexplorers.net.
 3. **AI Quest** — Strategy card game teaching the AI development lifecycle through competitive gameplay.
 
 ## Industries

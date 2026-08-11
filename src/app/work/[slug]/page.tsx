@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Container, Section } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
+import { ProductMedia } from "@/components/ui/ProductMedia";
 import { caseStudies, getCaseStudy } from "@content/case-studies";
 
 interface PageProps {
@@ -64,19 +65,41 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 </a>
               )}
             </div>
-            <div className="relative aspect-video overflow-hidden rounded-2xl border border-border-light">
-              <Image
-                src={study.image}
-                alt={study.imageAlt}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
+            <ProductMedia
+              image={study.image}
+              imageAlt={study.imageAlt}
+              video={study.video}
+              imageFit={study.imageFit}
+              aspect="video"
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
         </Container>
       </Section>
+
+      {study.gallery && study.gallery.length > 0 && (
+        <Section spacing="compact">
+          <Container>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {study.gallery.map((item) => (
+                <div
+                  key={item.src}
+                  className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border-light bg-porcelain"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      )}
 
       <Section spacing="compact" bg="porcelain">
         <Container size="reading">

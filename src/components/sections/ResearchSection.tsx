@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Container, Section } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -39,23 +40,34 @@ export function ResearchSection() {
         </div>
 
         <FadeIn delay={0.3}>
-          <div className="mt-16 rounded-xl border border-border-dark bg-charcoal p-8 md:p-10">
-            <p className="text-xs font-medium tracking-[0.12em] text-sage uppercase">
-              Featured Research
-            </p>
-            <h3 className="mt-3 text-2xl font-medium text-ivory">AlzDetect</h3>
-            <p className="mt-3 max-w-[600px] text-base leading-relaxed text-footer-secondary">
-              Exploring Vision Transformers and explainable AI for AI-assisted brain
-              MRI analysis — a research platform for decision-support, not clinical
-              diagnosis.
-            </p>
-            <Link
-              href="/work/alzdetect"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-sage transition-colors hover:text-ivory"
-            >
-              View AlzDetect research
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+          <div className="mt-16 grid overflow-hidden rounded-xl border border-border-dark bg-charcoal lg:grid-cols-[1fr_280px]">
+            <div className="p-8 md:p-10">
+              <p className="text-xs font-medium tracking-[0.12em] text-sage uppercase">
+                Featured Research
+              </p>
+              <h3 className="mt-3 text-2xl font-medium text-ivory">AlzDetect</h3>
+              <p className="mt-3 max-w-[600px] text-base leading-relaxed text-footer-secondary">
+                Exploring Vision Transformers and explainable AI for AI-assisted brain
+                MRI analysis — a research platform for decision-support, not clinical
+                diagnosis.
+              </p>
+              <Link
+                href="/work/alzdetect"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-sage transition-colors hover:text-ivory"
+              >
+                View AlzDetect research
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="relative aspect-[4/3] w-full border-t border-border-dark bg-obsidian lg:aspect-auto lg:min-h-full lg:border-t-0 lg:border-l">
+              <Image
+                src="/images/products/master_alz_analysis.png"
+                alt="AlzDetect MRI analysis interface"
+                fill
+                className="object-contain p-4"
+                sizes="280px"
+              />
+            </div>
           </div>
         </FadeIn>
       </Container>

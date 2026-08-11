@@ -19,6 +19,8 @@ export interface Product {
   externalUrl?: string;
   image: string;
   imageAlt: string;
+  video?: string;
+  imageFit?: "cover" | "contain";
 }
 
 export interface Industry {
@@ -42,6 +44,9 @@ export interface CaseStudy {
   outcome: string;
   image: string;
   imageAlt: string;
+  imageFit?: "cover" | "contain";
+  video?: string;
+  gallery?: { src: string; alt: string }[];
   href?: string;
 }
 

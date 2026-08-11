@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Container, Section } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ProductMedia } from "@/components/ui/ProductMedia";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { products } from "@content/products";
 
@@ -54,17 +54,14 @@ export function ProductsSection() {
                     )}
                   </div>
                 </div>
-                <div
-                  className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-border-light bg-page ${index % 2 === 1 ? "lg:order-1" : ""}`}
-                >
-                  <Image
-                    src={product.image}
-                    alt={product.imageAlt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
+                <ProductMedia
+                  image={product.image}
+                  imageAlt={product.imageAlt}
+                  video={product.video}
+                  imageFit={product.imageFit}
+                  className={index % 2 === 1 ? "lg:order-1" : ""}
+                  priority={index === 0}
+                />
               </article>
             </FadeIn>
           ))}
