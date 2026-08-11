@@ -21,8 +21,8 @@ export function CaseStudiesSection() {
 
         <RevealOnScroll className="mt-16 grid gap-8 lg:grid-cols-3 lg:gap-6">
           {caseStudies.map((study) => {
-            const fit = study.imageFit ?? "cover";
-            const bg = study.imageBg ?? "porcelain";
+            const fit = study.cardImageFit ?? study.imageFit ?? "cover";
+            const bg = study.cardImageBg ?? study.imageBg ?? "porcelain";
             const isContain = fit === "contain";
 
             return (

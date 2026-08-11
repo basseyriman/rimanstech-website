@@ -53,6 +53,8 @@ export const caseStudies: CaseStudy[] = [
     imageAlt: "Young AI Explorers book",
     imageFit: "contain",
     imageBg: "porcelain",
+    cardImageFit: "cover",
+    cardImageBg: "obsidian",
     href: "https://youngaiexplorers.net",
   },
   {

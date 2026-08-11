@@ -47,6 +47,8 @@ export interface CaseStudy {
   imageAlt: string;
   imageFit?: "cover" | "contain";
   imageBg?: "porcelain" | "obsidian" | "page";
+  cardImageFit?: "cover" | "contain";
+  cardImageBg?: "porcelain" | "obsidian" | "page";
   video?: string;
   gallery?: { src: string; alt: string }[];
   href?: string;
