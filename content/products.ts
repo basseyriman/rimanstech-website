@@ -13,7 +13,8 @@ export const products: Product[] = [
     externalUrl: "https://alzdetect.live",
     image: "/images/products/master_alz_analysis.png",
     imageAlt: "AlzDetect brain MRI analysis interface with classification results",
-    imageFit: "contain",
+    imageFit: "cover",
+    imageBg: "obsidian",
   },
   {
     id: "young-ai-explorers",
@@ -28,6 +29,7 @@ export const products: Product[] = [
     image: "/images/products/young-ai-explorers-book-cutout.png",
     imageAlt: "Young AI Explorers book cover",
     imageFit: "contain",
+    imageBg: "porcelain",
   },
   {
     id: "ai-quest",

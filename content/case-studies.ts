@@ -25,7 +25,8 @@ export const caseStudies: CaseStudy[] = [
       "AlzDetect demonstrates how advanced computer vision and explainable AI can be combined in a decision-support research platform. It is available at alzdetect.live for research exploration.",
     image: "/images/products/master_alz_analysis.png",
     imageAlt: "AlzDetect platform interface showing MRI analysis results",
-    imageFit: "contain",
+    imageFit: "cover",
+    imageBg: "obsidian",
     href: "https://alzdetect.live",
   },
   {
@@ -51,6 +52,7 @@ export const caseStudies: CaseStudy[] = [
     image: "/images/products/young-ai-explorers-book-cutout.png",
     imageAlt: "Young AI Explorers book",
     imageFit: "contain",
+    imageBg: "porcelain",
     href: "https://youngaiexplorers.net",
   },
   {

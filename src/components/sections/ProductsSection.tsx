@@ -59,6 +59,7 @@ export function ProductsSection() {
                   imageAlt={product.imageAlt}
                   video={product.video}
                   imageFit={product.imageFit}
+                  imageBg={product.imageBg}
                   className={index % 2 === 1 ? "lg:order-1" : ""}
                   priority={index === 0}
                 />

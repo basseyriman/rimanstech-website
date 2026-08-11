@@ -70,6 +70,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               imageAlt={study.imageAlt}
               video={study.video}
               imageFit={study.imageFit}
+              imageBg={study.imageBg}
               aspect="video"
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"

@@ -6,17 +6,25 @@ interface ProductMediaProps {
   imageAlt: string;
   video?: string;
   imageFit?: "cover" | "contain";
+  imageBg?: "porcelain" | "obsidian" | "page";
   priority?: boolean;
   aspect?: "video" | "standard";
   className?: string;
   sizes?: string;
 }
 
+const bgClass = {
+  porcelain: "bg-porcelain",
+  obsidian: "bg-obsidian",
+  page: "bg-page",
+} as const;
+
 export function ProductMedia({
   image,
   imageAlt,
   video,
   imageFit = "cover",
+  imageBg = "porcelain",
   priority = false,
   aspect = "standard",
   className,
@@ -27,7 +35,8 @@ export function ProductMedia({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-border-light bg-porcelain",
+        "relative overflow-hidden rounded-2xl border border-border-light",
+        bgClass[imageBg],
         aspect === "video" ? "aspect-video" : "aspect-[4/3]",
         className
       )}
@@ -50,7 +59,9 @@ export function ProductMedia({
           fill
           priority={priority}
           sizes={sizes}
-          className={cn(isContain ? "object-contain p-4 md:p-6" : "object-cover")}
+          className={cn(
+            isContain ? "object-contain p-5 md:p-8" : "object-cover object-center"
+          )}
         />
       )}
     </div>

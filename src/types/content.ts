@@ -21,6 +21,7 @@ export interface Product {
   imageAlt: string;
   video?: string;
   imageFit?: "cover" | "contain";
+  imageBg?: "porcelain" | "obsidian" | "page";
 }
 
 export interface Industry {
@@ -45,6 +46,7 @@ export interface CaseStudy {
   image: string;
   imageAlt: string;
   imageFit?: "cover" | "contain";
+  imageBg?: "porcelain" | "obsidian" | "page";
   video?: string;
   gallery?: { src: string; alt: string }[];
   href?: string;
