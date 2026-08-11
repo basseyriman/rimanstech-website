@@ -15,6 +15,12 @@ export async function sendEnquiryEmail(data: EnquiryEmailData) {
   const html = buildEnquiryHtml(data);
 
   if (!apiKey) {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error(
+        "Email service is not configured. Set RESEND_API_KEY in production."
+      );
+    }
+
     console.warn("[email] RESEND_API_KEY not configured. Enquiry logged:", {
       to,
       subject,

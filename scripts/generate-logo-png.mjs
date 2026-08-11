@@ -18,9 +18,19 @@ const exports = [
     width: 512,
   },
   {
-    input: path.join(brandDir, "rimanstech-monogram.svg"),
+    input: path.join(brandDir, "rimanstech-monogram-premium.svg"),
+    output: path.join(brandDir, "rimanstech-monogram-premium.png"),
+    width: 512,
+  },
+  {
+    input: path.join(brandDir, "rimanstech-monogram-premium.svg"),
     output: path.join(publicDir, "apple-touch-icon.png"),
     width: 180,
+  },
+  {
+    input: path.join(brandDir, "rimanstech-monogram-premium.svg"),
+    output: path.join(publicDir, "app-icon.png"),
+    width: 512,
   },
 ];
 

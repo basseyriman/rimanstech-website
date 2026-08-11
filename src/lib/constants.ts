@@ -32,7 +32,23 @@ export const FOOTER_COMPANY = [
 ] as const;
 
 export const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "GitHub", href: "https://github.com/basseyriman" },
-  { label: "Instagram", href: "https://instagram.com" },
+  {
+    label: "LinkedIn",
+    href:
+      process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN ??
+      "https://www.linkedin.com/in/basseyriman",
+  },
+  {
+    label: "GitHub",
+    href:
+      process.env.NEXT_PUBLIC_SOCIAL_GITHUB ?? "https://github.com/basseyriman",
+  },
+  ...(process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM
+    ? [
+        {
+          label: "Instagram",
+          href: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM,
+        },
+      ]
+    : []),
 ] as const;

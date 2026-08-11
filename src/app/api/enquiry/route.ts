@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { projectFormSchema } from "@/lib/validation/project-form";
+import { isEmailConfigured } from "@/lib/email/config";
 import { sendEnquiryEmail } from "@/lib/email/send-enquiry";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
 
@@ -11,6 +12,16 @@ export async function POST(request: Request) {
     return NextResponse.json(
       { error: "Too many requests. Please try again later." },
       { status: 429 }
+    );
+  }
+
+  if (process.env.NODE_ENV === "production" && !isEmailConfigured()) {
+    return NextResponse.json(
+      {
+        error:
+          "Enquiry delivery is temporarily unavailable. Please email support@rimanstech.com.",
+      },
+      { status: 503 }
     );
   }
 

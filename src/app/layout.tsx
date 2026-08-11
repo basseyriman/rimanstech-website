@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { Instrument_Serif } from "next/font/google";
+import { Geist, Instrument_Serif } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/brand/rimanstech-monogram.png", sizes: "512x512", type: "image/png" },
+      { url: "/app-icon.png", sizes: "512x512", type: "image/png" },
     ],
     apple: "/apple-touch-icon.png",
   },

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -9,9 +10,18 @@ interface LogoProps {
   variant?: "dark" | "light" | "auto";
   className?: string;
   monogram?: boolean;
+  showIndustries?: boolean;
 }
 
-export function Logo({ variant = "auto", className, monogram = false }: LogoProps) {
+const WORDMARK_WIDTH = 1333;
+const WORDMARK_HEIGHT = 182;
+
+export function Logo({
+  variant = "auto",
+  className,
+  monogram = false,
+  showIndustries = false,
+}: LogoProps) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -24,85 +34,53 @@ export function Logo({ variant = "auto", className, monogram = false }: LogoProp
         : "dark"
       : variant;
 
-  const textColor = effectiveVariant === "dark" ? "#101110" : "#F5F3EE";
-  const subColor = effectiveVariant === "dark" ? "#50534F" : "#9A9D98";
-  const accentColor = effectiveVariant === "dark" ? "#183C32" : "#8A9C8D";
-
   if (monogram) {
     return (
-      <svg
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className={cn("h-full w-full", className)}
+      <Image
+        src="/brand/rimanstech-monogram-premium.png"
+        alt=""
+        width={40}
+        height={40}
+        className={cn("h-full w-full rounded-lg object-cover", className)}
         aria-hidden="true"
-      >
-        <rect
-          width="40"
-          height="40"
-          rx="8"
-          fill={effectiveVariant === "dark" ? "#183C32" : "#F5F3EE"}
-        />
-        <text
-          x="20"
-          y="26"
-          textAnchor="middle"
-          fill={effectiveVariant === "dark" ? "#F5F3EE" : "#183C32"}
-          fontFamily="system-ui, sans-serif"
-          fontSize="16"
-          fontWeight="600"
-          letterSpacing="-0.02em"
-        >
-          RT
-        </text>
-      </svg>
+      />
     );
   }
 
+  const wordmarkSrc =
+    effectiveVariant === "light"
+      ? "/brand/rimanstech-wordmark-editorial-accent-nav-light.png"
+      : "/brand/rimanstech-wordmark-editorial-accent-nav-dark.png";
+
   return (
-    <Link href="/" className={cn("inline-block", className)} aria-label="RimansTech Industries home">
-      <svg
-        viewBox="0 0 180 34"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-[30px] w-[160px] md:h-[32px] md:w-[170px] lg:h-[34px] lg:w-[180px]"
-        aria-hidden="true"
-      >
-        <text
-          x="0"
-          y="14"
-          fill={textColor}
-          fontFamily="system-ui, sans-serif"
-          fontSize="13.5"
-          fontWeight="600"
-          letterSpacing="0.18em"
+    <Link
+      href="/"
+      className={cn(
+        "inline-flex shrink-0",
+        showIndustries ? "flex-col items-end gap-1" : "items-center",
+        className
+      )}
+      aria-label="RimansTech Industries home"
+    >
+      <Image
+        src={wordmarkSrc}
+        alt="RimansTech"
+        width={WORDMARK_WIDTH}
+        height={WORDMARK_HEIGHT}
+        className="h-6 w-auto md:h-7"
+        priority
+        unoptimized
+      />
+      {showIndustries && (
+        <span
+          className={cn(
+            "text-[8px] font-medium tracking-[0.26em] uppercase md:text-[9px]",
+            effectiveVariant === "light" ? "text-footer-secondary" : "text-graphite"
+          )}
         >
-          RIMANS
-        </text>
-        <text
-          x="0"
-          y="28"
-          fill={accentColor}
-          fontFamily="system-ui, sans-serif"
-          fontSize="13.5"
-          fontWeight="600"
-          letterSpacing="0.18em"
-        >
-          TECH
-        </text>
-        <line x1="88" y1="4" x2="88" y2="30" stroke={subColor} strokeWidth="0.5" opacity="0.4" />
-        <text
-          x="96"
-          y="26"
-          fill={subColor}
-          fontFamily="system-ui, sans-serif"
-          fontSize="7"
-          fontWeight="500"
-          letterSpacing="0.22em"
-        >
-          INDUSTRIES
-        </text>
-      </svg>
+          Industries
+        </span>
+      )}
     </Link>
   );
 }

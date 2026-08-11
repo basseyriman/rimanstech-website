@@ -17,11 +17,20 @@ export const defaultMetadata: Metadata = {
     siteName: "RimansTech Industries",
     title: "RimansTech Industries | AI & Software Development",
     description: defaultDescription,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "RimansTech Industries — We build intelligent technology.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "RimansTech Industries | AI & Software Development",
     description: defaultDescription,
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,

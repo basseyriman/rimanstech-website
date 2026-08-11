@@ -66,7 +66,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-border-dark pt-8 md:flex-row md:items-center">
           <div className="flex items-center gap-6">
-            <Logo variant="light" />
+            <Logo variant="light" showIndustries />
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-footer-secondary">
             <span>© RimansTech Industries {year}</span>
