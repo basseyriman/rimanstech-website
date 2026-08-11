@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/utils";
 import { industries } from "@content/industries";
 import { caseStudies } from "@content/case-studies";
+import { insights } from "@content/insights";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
@@ -36,6 +37,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    ...insights.map((item) => ({
+      url: `${SITE_URL}/insights/${item.slug}`,
+      lastModified: new Date(item.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
     })),
   ];
 }

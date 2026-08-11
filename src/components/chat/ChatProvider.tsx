@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import type { ChatMessage } from "@/types/chat";
 import { WELCOME_MESSAGE } from "@/lib/chat/system-prompt";
 import { trackEvent } from "@/lib/analytics";
@@ -22,39 +29,50 @@ const ChatContext = createContext<ChatContextValue | null>(null);
 
 const STORAGE_KEY = "rimanstech-chat";
 
+const subscribeNoop = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 function createMessage(role: ChatMessage["role"], content: string): ChatMessage {
   return { id: crypto.randomUUID(), role, content, timestamp: Date.now() };
 }
 
+function loadStoredMessages(): ChatMessage[] {
+  try {
+    const stored = sessionStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored) as ChatMessage[];
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    }
+  } catch {
+    /* ignore parse errors */
+  }
+
+  return [createMessage("assistant", WELCOME_MESSAGE)];
+}
+
 export function ChatProvider() {
+  const mounted = useSyncExternalStore(subscribeNoop, getClientSnapshot, getServerSnapshot);
+
+  if (!mounted) return null;
+
+  return <ChatProviderInner />;
+}
+
+function ChatProviderInner() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>(loadStoredMessages);
   const [isLoading, setIsLoading] = useState(false);
   const [showEnquiry, setShowEnquiry] = useState(false);
-  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    try {
-      const stored = sessionStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        setMessages(JSON.parse(stored));
-      } else {
-        setMessages([createMessage("assistant", WELCOME_MESSAGE)]);
-      }
-    } catch {
-      setMessages([createMessage("assistant", WELCOME_MESSAGE)]);
-    }
-    setInitialized(true);
-  }, []);
-
-  useEffect(() => {
-    if (!initialized || messages.length === 0) return;
+    if (messages.length === 0) return;
     try {
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
     } catch {
       /* ignore storage errors */
     }
-  }, [messages, initialized]);
+  }, [messages]);
 
   const openChat = useCallback(() => {
     setIsOpen(true);

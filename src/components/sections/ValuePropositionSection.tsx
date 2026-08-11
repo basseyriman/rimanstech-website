@@ -1,6 +1,6 @@
 import { Container, Section } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { FadeIn, RevealOnScroll, RevealItem } from "@/components/motion/FadeIn";
+import { RevealOnScroll, RevealItem } from "@/components/motion/FadeIn";
 
 const pillars = [
   {

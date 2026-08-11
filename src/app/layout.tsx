@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Instrument_Serif } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { CookieConsent } from "@/components/layout/CookieConsent";
 import { ChatProvider } from "@/components/chat/ChatProvider";
 import { defaultMetadata } from "@content/seo";
 import { SITE_URL } from "@/lib/utils";
@@ -67,7 +69,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </main>
           <Footer />
           <ChatProvider />
+          <CookieConsent />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

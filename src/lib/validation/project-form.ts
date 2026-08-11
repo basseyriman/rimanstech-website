@@ -72,6 +72,17 @@ export const chatMessageSchema = z.object({
     )
     .min(1)
     .max(50),
+  turnstileToken: z.string().optional(),
+});
+
+export const contactFormSchema = z.object({
+  name: z.string().min(2, "Please enter your name"),
+  email: z.string().email("Please enter a valid email"),
+  subject: z.string().min(3, "Please enter a subject"),
+  message: z.string().min(20, "Please provide more detail"),
+  sourcePage: z.string().optional(),
+  turnstileToken: z.string().optional(),
 });
 
 export type ProjectFormValues = z.infer<typeof projectFormSchema>;
+export type ContactFormValues = z.infer<typeof contactFormSchema>;

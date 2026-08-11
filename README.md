@@ -10,6 +10,18 @@ Premium corporate website for [RimansTech Industries](https://rimanstech.com) �
 - **Framer Motion**
 - **OpenAI** (AI Assistant)
 - **Resend** (email enquiries)
+- **Vercel Analytics** (optional, with cookie consent)
+
+## Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Production build
+npm run start    # Start production server
+npm run lint     # ESLint
+```
+
+CI runs `lint` and `build` on push/PR to `main` (see `.github/workflows/ci.yml`).
 
 ## Getting Started
 
@@ -35,6 +47,10 @@ Copy `.env.example` to `.env.local` for local development.
 | `NEXT_PUBLIC_SOCIAL_LINKEDIN` | Optional | Footer LinkedIn link |
 | `NEXT_PUBLIC_SOCIAL_GITHUB` | Optional | Footer GitHub link |
 | `NEXT_PUBLIC_SOCIAL_INSTAGRAM` | Optional | Footer Instagram link (omit to hide) |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Optional | Cloudflare Turnstile site key (forms) |
+| `TURNSTILE_SECRET_KEY` | Optional | Turnstile secret for server verification |
+| `UPSTASH_REDIS_REST_URL` | Optional | Durable rate limiting (Upstash Redis) |
+| `UPSTASH_REDIS_REST_TOKEN` | Optional | Upstash REST token |
 
 ### Development vs production
 
@@ -60,7 +76,7 @@ node scripts/process-hero-monogram.mjs         # Hero chrome RT (no background)
 node scripts/generate-wordmark-polish-variants.mjs
 ```
 
-See `public/brand/README.md` for asset naming.
+See `public/brand/README.md` for asset naming. Unused generation variants are kept in `public/brand/archive/`.
 
 ## Social sharing
 
@@ -77,7 +93,8 @@ Default Open Graph image: `public/og-image.png` (1200×630). LinkedIn/Twitter pr
 - `/contact` — Contact options
 - `/research` — RimansTech Labs
 - `/insights` — News and articles
-- `/work/[slug]` — Case studies
+- `/insights/[slug]` — Individual insight articles
+- `/work/[slug]` — Case studies (dynamic OG images)
 - `/privacy`, `/terms`
 
 ## AI Assistant

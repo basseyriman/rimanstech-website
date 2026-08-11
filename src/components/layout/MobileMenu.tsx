@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
@@ -13,6 +14,17 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open, onClose]);
+
   return (
     <div
       className={cn(

@@ -53,6 +53,10 @@ export interface Insight {
   date: string;
 }
 
+export interface InsightArticle extends Insight {
+  body: string[];
+}
+
 export interface ProcessStep {
   number: string;
   title: string;

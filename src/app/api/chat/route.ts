@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { chatMessageSchema } from "@/lib/validation/project-form";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 import {
   CHAT_SYSTEM_PROMPT,
   detectCommercialIntent,
@@ -8,7 +9,7 @@ import {
 
 export async function POST(request: Request) {
   const ip = getClientIp(request);
-  const limit = rateLimit(ip);
+  const limit = await rateLimit(ip);
 
   if (!limit.success) {
     return NextResponse.json(
@@ -27,6 +28,11 @@ export async function POST(request: Request) {
   const parsed = chatMessageSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json({ error: "Invalid message format." }, { status: 400 });
+  }
+
+  const turnstileOk = await verifyTurnstileToken(parsed.data.turnstileToken);
+  if (!turnstileOk) {
+    return NextResponse.json({ error: "Verification failed." }, { status: 403 });
   }
 
   const { messages } = parsed.data;

@@ -13,7 +13,7 @@ export function FounderSection() {
           <FadeIn>
             <div className="relative mx-auto aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-xl border border-border-light bg-porcelain">
               <Image
-                src="/images/founder/placeholder.svg"
+                src="/images/founder/Bassey.png"
                 alt="Bassey Riman, Founder of RimansTech Industries"
                 fill
                 className="object-cover"

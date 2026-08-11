@@ -67,7 +67,7 @@ export default function CompanyPage() {
           <div className="grid items-center gap-10 lg:grid-cols-[280px_1fr] lg:gap-16">
             <div className="relative mx-auto aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-xl border border-border-light">
               <Image
-                src="/images/founder/placeholder.svg"
+                src="/images/founder/Bassey.png"
                 alt="Bassey Riman"
                 fill
                 className="object-cover"
@@ -98,15 +98,35 @@ export default function CompanyPage() {
         <Container size="reading">
           <h2 className="text-2xl font-medium text-carbon">Careers</h2>
           <p className="mt-4 text-base leading-relaxed text-graphite">
-            We&apos;re building RimansTech into a serious AI and software
-            engineering organisation. Career opportunities will be listed here
-            as they become available.
+            RimansTech is a small, engineering-led organisation building AI products
+            and custom software for clients who care about quality. We value clear
+            thinking, ownership and the ability to turn complex problems into working
+            systems.
           </p>
-          <p className="mt-4 text-sm text-stone">
-            Interested in working with us? Contact{" "}
+          <p className="mt-4 text-base leading-relaxed text-graphite">
+            We don&apos;t have open roles listed right now, but we&apos;re always
+            interested in hearing from strong engineers, researchers and product
+            thinkers — especially in applied AI, full-stack development and technical
+            education.
+          </p>
+          <ul className="mt-6 space-y-3">
+            {[
+              "Applied AI and machine learning engineering",
+              "Full-stack product development (Next.js, Python, cloud)",
+              "Technical writing and AI education content",
+            ].map((area) => (
+              <li key={area} className="flex gap-3 text-sm leading-relaxed text-graphite">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-forest" />
+                {area}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-sm text-stone">
+            Send your CV and a short note on what you&apos;d like to work on to{" "}
             <a href="mailto:support@rimanstech.com" className="text-forest underline">
               support@rimanstech.com
             </a>
+            .
           </p>
         </Container>
       </Section>

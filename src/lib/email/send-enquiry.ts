@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 import { CONTACT_EMAIL } from "@/lib/utils";
-import type { ProjectFormValues } from "@/lib/validation/project-form";
+import type { ContactFormValues, ProjectFormValues } from "@/lib/validation/project-form";
 
 interface EnquiryEmailData extends ProjectFormValues {
   submittedAt?: string;
@@ -14,6 +14,48 @@ export async function sendEnquiryEmail(data: EnquiryEmailData) {
   const subject = `New RimansTech Project Enquiry – ${data.name}`;
   const html = buildEnquiryHtml(data);
 
+  return sendEmail({ apiKey, to, from, replyTo: data.email, subject, html, logContext: data.name });
+}
+
+export async function sendContactEmail(data: ContactFormValues & { submittedAt?: string }) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.CONTACT_EMAIL ?? CONTACT_EMAIL;
+  const from = process.env.EMAIL_FROM ?? "RimansTech Website <onboarding@resend.dev>";
+
+  const subject = `RimansTech Contact – ${data.subject}`;
+  const html = `
+    <h2>New Contact Message</h2>
+    <table style="border-collapse:collapse;width:100%;max-width:600px;">
+      <tr><td style="padding:8px 0;font-weight:bold;">Name</td><td>${escapeHtml(data.name)}</td></tr>
+      <tr><td style="padding:8px 0;font-weight:bold;">Email</td><td>${escapeHtml(data.email)}</td></tr>
+      <tr><td style="padding:8px 0;font-weight:bold;">Subject</td><td>${escapeHtml(data.subject)}</td></tr>
+      <tr><td style="padding:8px 0;font-weight:bold;">Source</td><td>${escapeHtml(data.sourcePage ?? "Website")}</td></tr>
+    </table>
+    <h3>Message</h3>
+    <p>${escapeHtml(data.message).replace(/\n/g, "<br>")}</p>
+    <p style="color:#888;font-size:12px;margin-top:24px;">Submitted: ${data.submittedAt ?? new Date().toISOString()}</p>
+  `;
+
+  return sendEmail({ apiKey, to, from, replyTo: data.email, subject, html, logContext: data.name });
+}
+
+async function sendEmail({
+  apiKey,
+  to,
+  from,
+  replyTo,
+  subject,
+  html,
+  logContext,
+}: {
+  apiKey: string | undefined;
+  to: string;
+  from: string;
+  replyTo: string;
+  subject: string;
+  html: string;
+  logContext: string;
+}) {
   if (!apiKey) {
     if (process.env.NODE_ENV === "production") {
       throw new Error(
@@ -21,11 +63,10 @@ export async function sendEnquiryEmail(data: EnquiryEmailData) {
       );
     }
 
-    console.warn("[email] RESEND_API_KEY not configured. Enquiry logged:", {
+    console.warn("[email] RESEND_API_KEY not configured. Message logged:", {
       to,
       subject,
-      name: data.name,
-      email: data.email,
+      name: logContext,
     });
     return { success: true, simulated: true };
   }
@@ -34,7 +75,7 @@ export async function sendEnquiryEmail(data: EnquiryEmailData) {
   const result = await resend.emails.send({
     from,
     to,
-    replyTo: data.email,
+    replyTo,
     subject,
     html,
   });

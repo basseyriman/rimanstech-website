@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Container, Section } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { pageMetadata } from "@content/seo";
@@ -25,7 +27,14 @@ export default function InsightsPage() {
               <p className="text-xs font-medium tracking-[0.12em] text-stone uppercase">
                 {item.category}
               </p>
-              <h2 className="mt-3 text-lg font-medium text-carbon">{item.title}</h2>
+              <h2 className="mt-3 text-lg font-medium text-carbon">
+                <Link
+                  href={`/insights/${item.slug}`}
+                  className="transition-colors hover:text-forest"
+                >
+                  {item.title}
+                </Link>
+              </h2>
               <p className="mt-3 text-sm leading-relaxed text-graphite">
                 {item.excerpt}
               </p>
@@ -36,6 +45,12 @@ export default function InsightsPage() {
                   year: "numeric",
                 })}
               </time>
+              <Link
+                href={`/insights/${item.slug}`}
+                className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-forest"
+              >
+                Read <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
             </article>
           ))}
         </div>

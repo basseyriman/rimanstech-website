@@ -57,6 +57,7 @@ export function ChatWindow() {
         "lg:md:w-[420px]"
       )}
       role="dialog"
+      aria-modal="true"
       aria-label="RimansTech AI Assistant"
     >
       <header className="flex shrink-0 items-center justify-between bg-obsidian px-4 py-3.5">

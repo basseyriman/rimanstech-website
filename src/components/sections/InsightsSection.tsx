@@ -15,7 +15,7 @@ export function InsightsSection() {
           {insights.slice(0, 3).map((item) => (
             <RevealItem key={item.slug}>
               <Link
-                href="/insights"
+                href={`/insights/${item.slug}`}
                 className="group block h-full rounded-xl border border-border-light bg-page p-6 transition-colors hover:border-sage/40 md:p-8"
               >
                 <p className="text-xs font-medium tracking-[0.12em] text-stone uppercase">

@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
-import { projectFormSchema } from "@/lib/validation/project-form";
+import { projectFormSchema, contactFormSchema } from "@/lib/validation/project-form";
 import { isEmailConfigured } from "@/lib/email/config";
-import { sendEnquiryEmail } from "@/lib/email/send-enquiry";
+import { sendEnquiryEmail, sendContactEmail } from "@/lib/email/send-enquiry";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 export async function POST(request: Request) {
   const ip = getClientIp(request);
-  const limit = rateLimit(ip);
+  const limit = await rateLimit(ip);
 
   if (!limit.success) {
     return NextResponse.json(
@@ -32,6 +33,42 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
+  const isContact =
+    typeof body === "object" &&
+    body !== null &&
+    "type" in body &&
+    (body as { type?: string }).type === "contact";
+
+  if (isContact) {
+    const parsed = contactFormSchema.safeParse(body);
+    if (!parsed.success) {
+      const errors: Record<string, string> = {};
+      parsed.error.issues.forEach((issue) => {
+        const key = issue.path[0]?.toString();
+        if (key) errors[key] = issue.message;
+      });
+      return NextResponse.json({ error: "Validation failed", errors }, { status: 400 });
+    }
+
+    const turnstileOk = await verifyTurnstileToken(parsed.data.turnstileToken);
+    if (!turnstileOk) {
+      return NextResponse.json({ error: "Verification failed. Please try again." }, { status: 403 });
+    }
+
+    try {
+      await sendContactEmail({
+        ...parsed.data,
+        submittedAt: new Date().toISOString(),
+      });
+      return NextResponse.json({ success: true });
+    } catch {
+      return NextResponse.json(
+        { error: "Failed to send message. Please email support@rimanstech.com." },
+        { status: 500 }
+      );
+    }
+  }
+
   const parsed = projectFormSchema.safeParse(body);
 
   if (!parsed.success) {
@@ -41,6 +78,13 @@ export async function POST(request: Request) {
       if (key) errors[key] = issue.message;
     });
     return NextResponse.json({ error: "Validation failed", errors }, { status: 400 });
+  }
+
+  const turnstileOk = await verifyTurnstileToken(
+    (body as { turnstileToken?: string }).turnstileToken
+  );
+  if (!turnstileOk) {
+    return NextResponse.json({ error: "Verification failed. Please try again." }, { status: 403 });
   }
 
   try {

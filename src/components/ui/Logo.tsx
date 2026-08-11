@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface LogoProps {
@@ -16,6 +16,10 @@ interface LogoProps {
 const WORDMARK_WIDTH = 1333;
 const WORDMARK_HEIGHT = 182;
 
+const subscribeNoop = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 export function Logo({
   variant = "auto",
   className,
@@ -23,9 +27,7 @@ export function Logo({
   showIndustries = false,
 }: LogoProps) {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useSyncExternalStore(subscribeNoop, getClientSnapshot, getServerSnapshot);
 
   const effectiveVariant =
     variant === "auto"
