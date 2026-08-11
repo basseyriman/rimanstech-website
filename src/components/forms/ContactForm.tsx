@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea } from "@/components/ui/Input";
 import type { ContactFormValues } from "@/lib/validation/project-form";
+import { CONTACT_EMAIL } from "@/lib/utils";
 
 interface ContactFormProps {
   sourcePage?: string;
@@ -95,7 +96,7 @@ export function ContactForm({ sourcePage = "/contact" }: ContactFormProps) {
 
       {status === "error" && !Object.keys(errors).length && (
         <p className="text-sm text-red-600">
-          Something went wrong. Please try again or email support@rimanstech.com.
+          Something went wrong. Please try again or email {CONTACT_EMAIL}.
         </p>
       )}
 

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { chatMessageSchema } from "@/lib/validation/project-form";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
+import { CONTACT_EMAIL } from "@/lib/utils";
 import { verifyTurnstileToken } from "@/lib/turnstile";
 import {
   CHAT_SYSTEM_PROMPT,
@@ -46,7 +47,7 @@ export async function POST(request: Request) {
   if (!apiKey) {
     return NextResponse.json({
       message:
-        "The AI assistant is temporarily unavailable. You can explore our services at /services, submit a project at /start-a-project, or contact us at support@rimanstech.com.",
+        `The AI assistant is temporarily unavailable. You can explore our services at /services, submit a project at /start-a-project, or contact us at ${CONTACT_EMAIL}.`,
       commercialIntent,
     });
   }
@@ -79,13 +80,13 @@ export async function POST(request: Request) {
     const data = await response.json();
     const message =
       data.choices?.[0]?.message?.content ??
-      "I don't want to give you inaccurate information. You can contact the RimansTech team directly at support@rimanstech.com.";
+      `I don't want to give you inaccurate information. You can contact the RimansTech team directly at ${CONTACT_EMAIL}.`;
 
     return NextResponse.json({ message, commercialIntent });
   } catch {
     return NextResponse.json({
       message:
-        "I'm having trouble responding right now. Please contact support@rimanstech.com or visit /start-a-project.",
+        `I'm having trouble responding right now. Please contact ${CONTACT_EMAIL} or visit /start-a-project.`,
       commercialIntent,
     });
   }

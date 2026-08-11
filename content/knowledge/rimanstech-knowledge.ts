@@ -33,11 +33,11 @@ Vision Transformers, Explainable AI, Computer Vision, Machine Learning, Human-ce
 Bassey Riman — AI Engineer, Founder of RimansTech Industries, MSc Artificial Intelligence, Author and AI education advocate.
 
 ## Contact
-- General / Support: support@rimanstech.com
+- General enquiries: hello@rimanstech.com
 - Project enquiries: /start-a-project
 
 ## Important Notes
 - RimansTech does NOT have publicly listed client logos, testimonials, partnerships, employee counts, office locations, funding details, awards or regulatory approvals unless explicitly stated.
 - AlzDetect is an AI-assisted research platform — it does NOT independently diagnose Alzheimer's disease and should NOT replace qualified clinicians.
-- For pricing, specific timelines and commercial terms, direct visitors to the Start a Project form or support@rimanstech.com.
+- For pricing, specific timelines and commercial terms, direct visitors to the Start a Project form or hello@rimanstech.com.
 `;

@@ -5,6 +5,7 @@ import type { ChatMessage } from "@/types/chat";
 import { buildConversationSummary } from "@/lib/chat/system-prompt";
 import { useChat } from "./ChatProvider";
 import { trackEvent } from "@/lib/analytics";
+import { CONTACT_EMAIL } from "@/lib/utils";
 
 interface EnquiryCaptureProps {
   messages: ChatMessage[];
@@ -40,7 +41,7 @@ export function EnquiryCapture({ messages }: EnquiryCaptureProps) {
     });
 
     if (!res.ok) {
-      setError("Unable to send. Please email support@rimanstech.com.");
+      setError(`Unable to send. Please email ${CONTACT_EMAIL}.`);
       setLoading(false);
       return;
     }

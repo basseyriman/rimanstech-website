@@ -11,6 +11,7 @@ import {
 import type { ChatMessage } from "@/types/chat";
 import { WELCOME_MESSAGE } from "@/lib/chat/system-prompt";
 import { trackEvent } from "@/lib/analytics";
+import { CONTACT_EMAIL } from "@/lib/utils";
 import { ChatWidget } from "./ChatWidget";
 
 interface ChatContextValue {
@@ -117,7 +118,7 @@ function ChatProviderInner() {
             createMessage(
               "assistant",
               data.error ??
-                "I'm temporarily unavailable. You can contact us at support@rimanstech.com or visit /start-a-project."
+                `I'm temporarily unavailable. You can contact us at ${CONTACT_EMAIL} or visit /start-a-project.`
             ),
           ]);
           return;
@@ -133,7 +134,7 @@ function ChatProviderInner() {
           ...prev,
           createMessage(
             "assistant",
-            "I'm having trouble connecting. Please try again or contact support@rimanstech.com."
+            `I'm having trouble connecting. Please try again or contact ${CONTACT_EMAIL}.`
           ),
         ]);
       } finally {

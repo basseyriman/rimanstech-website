@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container, Section } from "@/components/layout/Container";
 import { pageMetadata } from "@content/seo";
+import { CONTACT_EMAIL } from "@/lib/utils";
 
 export const metadata: Metadata = pageMetadata.terms;
 
@@ -109,8 +110,8 @@ export default function TermsPage() {
             <h2 className="text-xl font-medium text-carbon">Contact</h2>
             <p className="mt-3">
               Questions about these terms:{" "}
-              <a href="mailto:support@rimanstech.com" className="text-forest underline">
-                support@rimanstech.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-forest underline">
+                {CONTACT_EMAIL}
               </a>
             </p>
           </section>

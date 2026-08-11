@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { CookieConsent } from "@/components/layout/CookieConsent";
 import { ChatProvider } from "@/components/chat/ChatProvider";
 import { defaultMetadata } from "@content/seo";
-import { SITE_URL } from "@/lib/utils";
+import { CONTACT_EMAIL, SITE_URL } from "@/lib/utils";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   ...defaultMetadata,
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
       { url: "/app-icon.png", sizes: "512x512", type: "image/png" },
     ],
     apple: "/apple-touch-icon.png",
@@ -39,7 +39,7 @@ const organizationJsonLd = {
   url: SITE_URL,
   description:
     "RimansTech Industries designs and develops AI applications, software platforms, intelligent systems and digital products.",
-  email: "support@rimanstech.com",
+  email: CONTACT_EMAIL,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

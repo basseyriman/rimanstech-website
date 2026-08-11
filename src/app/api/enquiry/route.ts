@@ -3,6 +3,7 @@ import { projectFormSchema, contactFormSchema } from "@/lib/validation/project-f
 import { isEmailConfigured } from "@/lib/email/config";
 import { sendEnquiryEmail, sendContactEmail } from "@/lib/email/send-enquiry";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
+import { CONTACT_EMAIL } from "@/lib/utils";
 import { verifyTurnstileToken } from "@/lib/turnstile";
 
 export async function POST(request: Request) {
@@ -20,7 +21,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Enquiry delivery is temporarily unavailable. Please email support@rimanstech.com.",
+          `Enquiry delivery is temporarily unavailable. Please email ${CONTACT_EMAIL}.`,
       },
       { status: 503 }
     );
@@ -63,7 +64,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true });
     } catch {
       return NextResponse.json(
-        { error: "Failed to send message. Please email support@rimanstech.com." },
+        { error: `Failed to send message. Please email ${CONTACT_EMAIL}.` },
         { status: 500 }
       );
     }
@@ -96,7 +97,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json(
-      { error: "Failed to send enquiry. Please email support@rimanstech.com." },
+      { error: `Failed to send enquiry. Please email ${CONTACT_EMAIL}.` },
       { status: 500 }
     );
   }

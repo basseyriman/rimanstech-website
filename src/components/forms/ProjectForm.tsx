@@ -10,6 +10,7 @@ import {
   timelines,
   type ProjectFormValues,
 } from "@/lib/validation/project-form";
+import { CONTACT_EMAIL } from "@/lib/utils";
 
 interface ProjectFormProps {
   defaultChatSummary?: string;
@@ -164,7 +165,7 @@ export function ProjectForm({ defaultChatSummary, sourcePage = "Website" }: Proj
 
       {status === "error" && !Object.keys(errors).length && (
         <p className="text-sm text-red-600">
-          Something went wrong. Please try again or email support@rimanstech.com.
+          Something went wrong. Please try again or email {CONTACT_EMAIL}.
         </p>
       )}
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container, Section } from "@/components/layout/Container";
 import { pageMetadata } from "@content/seo";
+import { CONTACT_EMAIL } from "@/lib/utils";
 
 export const metadata: Metadata = pageMetadata.privacy;
 
@@ -139,8 +140,8 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-medium text-carbon">Contact</h2>
             <p className="mt-3">
               For privacy-related questions or requests, contact{" "}
-              <a href="mailto:support@rimanstech.com" className="text-forest underline">
-                support@rimanstech.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-forest underline">
+                {CONTACT_EMAIL}
               </a>
               .
             </p>

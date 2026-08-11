@@ -4,6 +4,7 @@ import { Container, Section } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { pageMetadata } from "@content/seo";
+import { CONTACT_EMAIL } from "@/lib/utils";
 
 export const metadata: Metadata = pageMetadata.company;
 
@@ -123,8 +124,8 @@ export default function CompanyPage() {
           </ul>
           <p className="mt-6 text-sm text-stone">
             Send your CV and a short note on what you&apos;d like to work on to{" "}
-            <a href="mailto:support@rimanstech.com" className="text-forest underline">
-              support@rimanstech.com
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-forest underline">
+              {CONTACT_EMAIL}
             </a>
             .
           </p>

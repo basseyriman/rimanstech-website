@@ -41,7 +41,7 @@ Copy `.env.example` to `.env.local` for local development.
 |----------|----------|-------------|
 | `OPENAI_API_KEY` | Production | Powers the RimansTech AI Assistant |
 | `RESEND_API_KEY` | Production | Sends project enquiry emails |
-| `CONTACT_EMAIL` | Optional | Recipient (default: support@rimanstech.com) |
+| `CONTACT_EMAIL` | Optional | Recipient (default: hello@rimanstech.com) |
 | `EMAIL_FROM` | Production | Verified sender on your Resend domain, e.g. `RimansTech <hello@rimanstech.com>` |
 | `NEXT_PUBLIC_SITE_URL` | Production | Canonical URL for SEO and Open Graph |
 | `NEXT_PUBLIC_SOCIAL_LINKEDIN` | Optional | Footer LinkedIn link |
