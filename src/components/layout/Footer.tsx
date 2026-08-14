@@ -1,9 +1,11 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { Container } from "@/components/layout/Container";
+import { FooterWordmark } from "@/components/layout/FooterWordmark";
 import {
   FOOTER_SERVICES,
   FOOTER_PRODUCTS,
+  FOOTER_WORK,
   FOOTER_COMPANY,
   SOCIAL_LINKS,
 } from "@/lib/constants";
@@ -13,18 +15,11 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-obsidian text-ivory">
+    <footer id="footer" className="bg-obsidian text-ivory">
       <Container size="shell" className="pt-20 pb-10 md:pt-24 lg:pt-[100px]">
-        <div className="mb-16 overflow-hidden md:mb-20">
-          <p
-            className="editorial-serif text-[56px] leading-none font-normal tracking-[-0.03em] text-ivory/10 sm:text-[80px] md:text-[100px] lg:text-[120px]"
-            aria-hidden="true"
-          >
-            RIMANSTECH
-          </p>
-        </div>
+        <FooterWordmark />
 
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-5 lg:gap-8">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-6 lg:gap-8">
           <FooterColumn title="Services">
             {FOOTER_SERVICES.map((item) => (
               <FooterLink key={item.href} href={item.href}>
@@ -41,6 +36,14 @@ export function Footer() {
             ))}
           </FooterColumn>
 
+          <FooterColumn title="Work">
+            {FOOTER_WORK.map((item) => (
+              <FooterLink key={item.href} href={item.href}>
+                {item.label}
+              </FooterLink>
+            ))}
+          </FooterColumn>
+
           <FooterColumn title="Company">
             {FOOTER_COMPANY.map((item) => (
               <FooterLink key={item.href} href={item.href}>
@@ -51,8 +54,9 @@ export function Footer() {
 
           <FooterColumn title="Work With Us">
             <FooterLink href="/start-a-project">Start a Project</FooterLink>
-            <FooterLink href="/contact">Contact</FooterLink>
-            <FooterLink href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</FooterLink>
+            <FooterLink href={`mailto:${CONTACT_EMAIL}`}>
+              {CONTACT_EMAIL}
+            </FooterLink>
           </FooterColumn>
 
           <FooterColumn title="Social">
@@ -70,7 +74,10 @@ export function Footer() {
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-footer-secondary">
             <span>© RimansTech Industries {year}</span>
-            <Link href="/privacy" className="transition-colors hover:text-ivory">
+            <Link
+              href="/privacy"
+              className="transition-colors hover:text-ivory"
+            >
               Privacy
             </Link>
             <Link href="/terms" className="transition-colors hover:text-ivory">
@@ -119,7 +126,9 @@ function FooterLink({
         <a
           href={href}
           className={className}
-          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          {...(external
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
         >
           {children}
         </a>

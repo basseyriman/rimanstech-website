@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { SitePreviewImage } from "@/components/ui/SitePreviewImage";
 
 interface ProductMediaProps {
   image: string;
   imageAlt: string;
+  previewUrl?: string;
   video?: string;
   imageFit?: "cover" | "contain";
   imageBg?: "porcelain" | "obsidian" | "page";
@@ -22,6 +24,7 @@ const bgClass = {
 export function ProductMedia({
   image,
   imageAlt,
+  previewUrl,
   video,
   imageFit = "cover",
   imageBg = "porcelain",
@@ -31,6 +34,11 @@ export function ProductMedia({
   sizes = "(max-width: 1024px) 100vw, 50vw",
 }: ProductMediaProps) {
   const isContain = imageFit === "contain";
+  const mediaClassName = cn(
+    "h-full w-full",
+    isContain ? "object-contain object-top p-3 md:p-5" : "object-cover object-center",
+    previewUrl && !isContain && !video && "object-top"
+  );
 
   return (
     <div
@@ -49,8 +57,17 @@ export function ProductMedia({
           muted
           loop
           playsInline
-          className="h-full w-full object-cover"
+          className={mediaClassName}
           aria-label={imageAlt}
+        />
+      ) : previewUrl ? (
+        <SitePreviewImage
+          previewUrl={previewUrl}
+          fallbackImage={image}
+          alt={imageAlt}
+          priority={priority}
+          sizes={sizes}
+          className={mediaClassName}
         />
       ) : (
         <Image
@@ -59,9 +76,7 @@ export function ProductMedia({
           fill
           priority={priority}
           sizes={sizes}
-          className={cn(
-            isContain ? "object-contain p-5 md:p-8" : "object-cover object-center"
-          )}
+          className={mediaClassName}
         />
       )}
     </div>

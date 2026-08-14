@@ -6,6 +6,10 @@ export interface Service {
   capabilities: string[];
   cta?: { label: string; href: string };
   headline?: string;
+  examples?: {
+    label: string;
+    items: { name: string; href: string }[];
+  };
 }
 
 export interface Product {
@@ -22,21 +26,29 @@ export interface Product {
   video?: string;
   imageFit?: "cover" | "contain";
   imageBg?: "porcelain" | "obsidian" | "page";
+  brandLabel?: string;
+  previewUrl?: string;
+  aspect?: "video" | "standard";
 }
 
-export interface Industry {
-  id: string;
-  slug: string;
+export interface ProductFormat {
   title: string;
+  subtitle?: string;
   description: string;
-  longDescription: string;
-  capabilities: string[];
+  image: string;
+  imageAlt: string;
+  video?: string;
+  cta: { label: string; href: string; external?: boolean };
+  previewUrl?: string;
+  imageFit?: "cover" | "contain";
+  imageBg?: "porcelain" | "obsidian" | "page";
 }
 
-export interface CaseStudy {
+export interface ProductDetail {
   slug: string;
   title: string;
   category: string;
+  headline?: string;
   summary: string;
   challenge: string;
   approach: string;
@@ -47,11 +59,52 @@ export interface CaseStudy {
   imageAlt: string;
   imageFit?: "cover" | "contain";
   imageBg?: "porcelain" | "obsidian" | "page";
-  cardImageFit?: "cover" | "contain";
-  cardImageBg?: "porcelain" | "obsidian" | "page";
+  aspect?: "video" | "standard";
   video?: string;
   gallery?: { src: string; alt: string }[];
   href?: string;
+  externalUrl?: string;
+  previewUrl?: string;
+  brandLabel?: string;
+  features?: string[];
+  formats?: ProductFormat[];
+  amazonUrl?: string;
+  bookTitle?: string;
+}
+
+export type ClientWorkStatus = "live" | "in-development" | "case-study";
+
+export interface ClientWork {
+  slug: string;
+  projectName: string;
+  clientName: string;
+  category: string;
+  description: string;
+  summary: string;
+  status: ClientWorkStatus;
+  statusLabel: string;
+  year?: string;
+  services?: string[];
+  technologies?: string[];
+  heroImage: string;
+  heroImageAlt: string;
+  screenshots?: { src: string; alt: string }[];
+  externalUrl?: string;
+  featured: boolean;
+  previewUrl?: string;
+  challenge?: string;
+  approach?: string;
+  built?: string;
+  outcome?: string;
+}
+
+export interface Industry {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  longDescription: string;
+  capabilities: string[];
 }
 
 export interface Insight {

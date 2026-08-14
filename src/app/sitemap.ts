@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/utils";
 import { industries } from "@content/industries";
-import { caseStudies } from "@content/case-studies";
+import { productDetails } from "@content/product-details";
+import { clientWork } from "@content/client-work";
 import { insights } from "@content/insights";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/services",
     "/products",
+    "/work",
     "/industries",
     "/company",
     "/contact",
@@ -32,8 +34,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...caseStudies.map((cs) => ({
-      url: `${SITE_URL}/work/${cs.slug}`,
+    ...productDetails.map((product) => ({
+      url: `${SITE_URL}/products/${product.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    ...clientWork.map((project) => ({
+      url: `${SITE_URL}/work/${project.slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,

@@ -1,7 +1,7 @@
+import Link from "next/link";
 import { Container, Section } from "@/components/layout/Container";
 import { CTA } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { CONTACT_EMAIL } from "@/lib/utils";
 
 export function FinalCTASection() {
   return (
@@ -13,18 +13,20 @@ export function FinalCTASection() {
               What are you building?
             </h2>
             <p className="mt-6 text-base leading-relaxed text-footer-secondary md:text-lg">
-              Tell us about the product, problem or idea. We&apos;ll help you
-              explore what technology can make possible.
+              Whether you have an early idea, an existing system or a business
+              problem that technology could solve, tell us about it.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col items-center justify-center gap-4">
               <CTA
                 dark
                 primary={{ label: "Start a Project", href: "/start-a-project" }}
-                secondary={{
-                  label: CONTACT_EMAIL,
-                  href: `mailto:${CONTACT_EMAIL}`,
-                }}
               />
+              <Link
+                href="mailto:support@rimanstech.com"
+                className="text-sm text-footer-secondary transition-colors hover:text-ivory"
+              >
+                support@rimanstech.com
+              </Link>
             </div>
           </div>
         </FadeIn>

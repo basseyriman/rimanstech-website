@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 188 32" fill="none" role="img" aria-label="RimansTech">
+  <title>RimansTech</title>
+  <g fill="#101110">
+    <rect x="2" y="3" width="5" height="26" rx="0.75"/>
+    <path d="M7 3H0v3.5h5.5v-3.5Z"/>
+    <path
+      d="M8.2 6.8h2.1c5.8 0 10.2 3.8 10.2 9.1s-4.4 9.1-10.2 9.1H8.2V20h1.8c3.6 0 6-2.1 6-5.1s-2.4-5.1-6-5.1H8.2V6.8Z"
+    />
+    <path d="M7.2 20.2 18.8 29.5h-5.4L7.2 24.2v-4Z"/>
+  </g>
+  <text
+    x="29"
+    y="23.5"
+    fill="#101110"
+    font-family="Geist, Inter, system-ui, sans-serif"
+    font-size="19.5"
+    font-weight="600"
+    letter-spacing="-0.045em"
+  >
+    imansTech
+  </text>
+</svg>

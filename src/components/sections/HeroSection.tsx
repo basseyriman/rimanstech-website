@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { CTA } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/SectionHeader";
@@ -24,34 +23,16 @@ export function HeroSection() {
 
           <HeroEntrance delay={0.32} className="mt-6">
             <p className="text-lg leading-relaxed text-graphite md:text-xl md:leading-relaxed">
-              AI products, software platforms and digital systems engineered for
-              businesses, organisations and ambitious founders.
-            </p>
-          </HeroEntrance>
-
-          <HeroEntrance delay={0.42} className="mt-4">
-            <p className="max-w-[580px] text-base leading-relaxed text-stone">
-              From an early idea to production-ready software, RimansTech Industries
-              designs, develops and deploys technology that solves real problems —
-              while building our own products across healthcare, education and applied
-              AI.
+              AI products, software platforms and digital systems for businesses,
+              organisations and founders.
             </p>
           </HeroEntrance>
 
           <HeroEntrance delay={0.52} className="mt-8">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <CTA
-                primary={{ label: "Start a Project", href: "/start-a-project" }}
-                secondary={{ label: "Explore Our Work", href: "/#selected-work" }}
-              />
-            </div>
-            <Link
-              href="/#what-we-do"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-forest transition-colors hover:text-forest-hover"
-            >
-              What we build
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <CTA
+              primary={{ label: "Start a Project", href: "/start-a-project" }}
+              secondary={{ label: "Explore Our Work", href: "/#selected-work" }}
+            />
           </HeroEntrance>
         </div>
 

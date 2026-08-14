@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Container, Section } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
+import { ServiceProof } from "@/components/ui/ServiceProof";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { pageMetadata } from "@content/seo";
 import { services, technologies, serviceFaqs } from "@content/services";
@@ -57,6 +58,9 @@ export default function ServicesPage() {
                   >
                     {service.cta.label} <ArrowRight className="h-4 w-4" />
                   </Link>
+                )}
+                {service.examples && (
+                  <ServiceProof label={service.examples.label} items={service.examples.items} />
                 )}
               </article>
             ))}

@@ -11,8 +11,16 @@ const sources = [
   "rimanstech-wordmark-resend-dark-transparent.png",
 ];
 
+// Bold dark = negate of cleaned bold light (same approach as header variants)
+
+/**
+ * Soft alpha from black ink on a light canvas.
+ * Solid ink stays fully opaque; only edge grays get anti-aliased alpha.
+ */
 function makeTransparent(raw, info) {
   const pixels = Buffer.from(raw);
+  const SOLID = 36;
+  const CLEAR = 242;
 
   for (let i = 0; i < pixels.length; i += 4) {
     const r = pixels[i];
@@ -20,17 +28,50 @@ function makeTransparent(raw, info) {
     const b = pixels[i + 2];
     const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
 
-    if (luminance > 160) {
+    if (luminance >= CLEAR) {
+      pixels[i] = 0;
+      pixels[i + 1] = 0;
+      pixels[i + 2] = 0;
       pixels[i + 3] = 0;
       continue;
     }
 
-    pixels[i] = r < 128 ? 16 : 245;
-    pixels[i + 1] = g < 128 ? 17 : 243;
-    pixels[i + 2] = b < 128 ? 16 : 238;
-    pixels[i + 3] = 255;
+    if (luminance <= SOLID) {
+      pixels[i] = 16;
+      pixels[i + 1] = 17;
+      pixels[i + 2] = 16;
+      pixels[i + 3] = 255;
+      continue;
+    }
+
+    let a = (CLEAR - luminance) / (CLEAR - SOLID);
+    if (a < 0) a = 0;
+    if (a > 1) a = 1;
+    if (a < 0.05) {
+      pixels[i] = 0;
+      pixels[i + 1] = 0;
+      pixels[i + 2] = 0;
+      pixels[i + 3] = 0;
+      continue;
+    }
+
+    pixels[i] = 16;
+    pixels[i + 1] = 17;
+    pixels[i + 2] = 16;
+    pixels[i + 3] = Math.round(a * 255);
   }
 
+  return pixels;
+}
+
+function toIvoryInk(raw) {
+  const pixels = Buffer.from(raw);
+  for (let i = 0; i < pixels.length; i += 4) {
+    if (pixels[i + 3] === 0) continue;
+    pixels[i] = 245;
+    pixels[i + 1] = 243;
+    pixels[i + 2] = 238;
+  }
   return pixels;
 }
 
@@ -59,6 +100,30 @@ for (const source of sources) {
 
   const meta = await sharp(output).metadata();
   console.log(`Generated ${path.basename(output)} (${meta.width}x${meta.height})`);
+
+  if (source === "rimanstech-wordmark-bold-light-transparent.png") {
+    const boldDarkOut = path.join(
+      brandDir,
+      "rimanstech-wordmark-bold-dark-transparent-clean.png",
+    );
+    const cleaned = await sharp(output).ensureAlpha().raw().toBuffer({
+      resolveWithObject: true,
+    });
+    const ivory = toIvoryInk(cleaned.data);
+    await sharp(ivory, {
+      raw: {
+        width: cleaned.info.width,
+        height: cleaned.info.height,
+        channels: 4,
+      },
+    })
+      .png({ compressionLevel: 9, force: true })
+      .toFile(boldDarkOut);
+    const boldDarkMeta = await sharp(boldDarkOut).metadata();
+    console.log(
+      `Generated ${path.basename(boldDarkOut)} (${boldDarkMeta.width}x${boldDarkMeta.height})`,
+    );
+  }
 }
 
 // Primary header assets — normal weight wordmark, tight crop, true alpha

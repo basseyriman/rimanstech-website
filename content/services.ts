@@ -18,6 +18,13 @@ export const services: Service[] = [
       "AI-powered workflows",
     ],
     cta: { label: "Discuss an AI Project", href: "/start-a-project" },
+    examples: {
+      label: "RimansTech examples",
+      items: [
+        { name: "AlzDetect", href: "/products/alzdetect" },
+        { name: "VoiceDress", href: "/products/voicedress" },
+      ],
+    },
   },
   {
     id: "software-development",
@@ -36,6 +43,13 @@ export const services: Service[] = [
       "Full-stack development",
     ],
     cta: { label: "Build Your Product", href: "/start-a-project" },
+    examples: {
+      label: "Selected work",
+      items: [
+        { name: "Henco Homes", href: "/work/henco-homes" },
+        { name: "Adrielle Studios", href: "/work/adrielle-studios" },
+      ],
+    },
   },
   {
     id: "ai-integration",
@@ -85,6 +99,13 @@ export const services: Service[] = [
       "Evaluation",
       "Explainable AI",
     ],
+    examples: {
+      label: "RimansTech examples",
+      items: [
+        { name: "Young AI Explorers", href: "/products/young-ai-explorers" },
+        { name: "AI Quest", href: "/products/ai-quest" },
+      ],
+    },
   },
   {
     id: "mvp-development",

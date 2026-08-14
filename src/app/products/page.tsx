@@ -18,7 +18,7 @@ export default function ProductsPage() {
             titleAs="h1"
             serif
             title="Technology we build for ourselves."
-            description="Our products explore new applications of artificial intelligence across healthcare, education and applied AI."
+            description="Our own products allow RimansTech to explore how artificial intelligence, software and digital experiences can solve problems, expand access and create new ways of interacting with technology."
           />
         </Container>
       </Section>
@@ -32,7 +32,12 @@ export default function ProductsPage() {
                 className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
               >
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <p className="text-xs font-medium tracking-[0.12em] text-stone uppercase">
+                  {product.brandLabel && (
+                    <p className="text-[10px] font-medium tracking-[0.14em] text-sage uppercase">
+                      {product.brandLabel}
+                    </p>
+                  )}
+                  <p className="mt-2 text-xs font-medium tracking-[0.12em] text-stone uppercase">
                     {product.category}
                   </p>
                   <h2 className="mt-2 text-3xl font-medium text-carbon md:text-4xl">
@@ -64,9 +69,11 @@ export default function ProductsPage() {
                 <ProductMedia
                   image={product.image}
                   imageAlt={product.imageAlt}
+                  previewUrl={product.previewUrl}
                   video={product.video}
                   imageFit={product.imageFit}
                   imageBg={product.imageBg}
+                  aspect={product.aspect}
                   className={index % 2 === 1 ? "lg:order-1" : ""}
                   priority={index === 0}
                 />

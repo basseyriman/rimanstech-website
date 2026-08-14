@@ -11,9 +11,9 @@ export function ProductsSection() {
     <Section id="products" bg="porcelain">
       <Container>
         <SectionHeader
-          eyebrow="RIMANSTECH PRODUCTS"
+          eyebrow="OUR PRODUCTS"
           title="We build our own technology too."
-          description="Our products are how we explore new applications of artificial intelligence and turn research, education and technical ideas into real experiences."
+          description="Alongside the technology we build for clients, RimansTech develops its own products across artificial intelligence, healthcare, education, consumer technology and interactive learning."
         />
 
         <div className="mt-16 space-y-20 lg:mt-24">
@@ -21,7 +21,12 @@ export function ProductsSection() {
             <FadeIn key={product.id} delay={index * 0.1}>
               <article className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <p className="text-xs font-medium tracking-[0.12em] text-stone uppercase">
+                  {product.brandLabel && (
+                    <p className="text-[10px] font-medium tracking-[0.14em] text-sage uppercase">
+                      {product.brandLabel}
+                    </p>
+                  )}
+                  <p className="mt-2 text-xs font-medium tracking-[0.12em] text-stone uppercase">
                     {product.category}
                   </p>
                   <h3 className="mt-2 text-3xl font-medium tracking-[-0.02em] text-carbon md:text-4xl">
@@ -57,15 +62,27 @@ export function ProductsSection() {
                 <ProductMedia
                   image={product.image}
                   imageAlt={product.imageAlt}
+                  previewUrl={product.previewUrl}
                   video={product.video}
                   imageFit={product.imageFit}
                   imageBg={product.imageBg}
+                  aspect={product.aspect}
                   className={index % 2 === 1 ? "lg:order-1" : ""}
                   priority={index === 0}
                 />
               </article>
             </FadeIn>
           ))}
+        </div>
+
+        <div className="mt-16 text-center lg:mt-20">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2 text-sm font-medium text-forest transition-colors hover:text-forest-hover"
+          >
+            Explore All Products
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </Container>
     </Section>

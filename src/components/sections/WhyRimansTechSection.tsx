@@ -1,21 +1,22 @@
 import { Container, Section } from "@/components/layout/Container";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { RevealOnScroll, RevealItem } from "@/components/motion/FadeIn";
 
 const principles = [
   {
-    title: "PRODUCT THINKING",
+    title: "Product Thinking",
     description:
-      "We think beyond code to the product, user and outcome.",
+      "We think beyond code to the user, problem and outcome.",
   },
   {
-    title: "AI + SOFTWARE",
+    title: "AI + Software Engineering",
     description:
-      "Machine learning expertise combined with full-stack engineering.",
+      "Machine-learning capability combined with full-stack product development.",
   },
   {
-    title: "BUILDERS OURSELVES",
+    title: "Builders Ourselves",
     description:
-      "Our own products mean we understand what it takes to move from an idea to something people can actually use.",
+      "We understand product development because we create and launch our own technology.",
   },
 ];
 
@@ -23,9 +24,10 @@ export function WhyRimansTechSection() {
   return (
     <Section>
       <Container>
-        <h2 className="editorial-serif max-w-[900px] text-[32px] leading-[1.1] font-normal tracking-[-0.02em] text-carbon md:text-[44px] lg:text-[52px]">
-          Not another outsourced development shop.
-        </h2>
+        <SectionHeader
+          eyebrow="WHY RIMANSTECH"
+          title="Not another outsourced development shop."
+        />
 
         <RevealOnScroll className="mt-16 grid gap-10 md:grid-cols-3 md:gap-8 lg:mt-20">
           {principles.map((principle) => (

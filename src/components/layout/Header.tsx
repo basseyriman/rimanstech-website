@@ -6,9 +6,14 @@ import { Menu } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_DROPDOWNS, NAV_LINKS, type NavDropdownKey } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { MobileMenu } from "./MobileMenu";
+import { NavDropdown } from "./NavDropdown";
+
+function hasDropdown(label: string): label is NavDropdownKey {
+  return label in NAV_DROPDOWNS;
+}
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,15 +46,25 @@ export function Header() {
           <Logo variant="auto" />
 
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-graphite transition-colors hover:text-carbon"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) =>
+              hasDropdown(link.label) ? (
+                <NavDropdown
+                  key={link.href}
+                  label={link.label}
+                  items={NAV_DROPDOWNS[link.label].items}
+                  viewAllHref={NAV_DROPDOWNS[link.label].viewAllHref}
+                  viewAllLabel={NAV_DROPDOWNS[link.label].viewAllLabel}
+                />
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-graphite transition-colors hover:text-carbon"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">

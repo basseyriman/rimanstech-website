@@ -4,20 +4,29 @@ import { RevealOnScroll, RevealItem } from "@/components/motion/FadeIn";
 
 const pillars = [
   {
-    title: "BUILD",
+    title: "Build",
     description:
-      "We design and engineer digital products from the ground up.",
+      "AI applications, software platforms, SaaS products and MVPs.",
   },
   {
-    title: "INTEGRATE",
+    title: "Integrate",
     description:
-      "We bring AI into existing products, workflows and business systems.",
+      "AI, automation and intelligent workflows for existing businesses.",
   },
   {
-    title: "INNOVATE",
+    title: "Innovate",
     description:
-      "We explore new applications of artificial intelligence through our own products and research.",
+      "Our own AI products, research and experimental technology.",
   },
+];
+
+const capabilities = [
+  "AI Product Development",
+  "Software Engineering",
+  "AI Integration",
+  "Automation",
+  "Machine Learning",
+  "MVP Development",
 ];
 
 export function ValuePropositionSection() {
@@ -44,6 +53,10 @@ export function ValuePropositionSection() {
             </RevealItem>
           ))}
         </RevealOnScroll>
+
+        <p className="mt-12 text-center text-xs leading-relaxed tracking-[0.08em] text-stone md:mt-16 md:text-sm">
+          {capabilities.join(" · ")}
+        </p>
       </Container>
     </Section>
   );

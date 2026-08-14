@@ -54,7 +54,7 @@ export default function ResearchPage() {
                 not a clinical diagnostic tool.
               </p>
               <Link
-                href="/work/alzdetect"
+                href="/products/alzdetect"
                 className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-forest"
               >
                 View AlzDetect case study <ArrowRight className="h-4 w-4" />

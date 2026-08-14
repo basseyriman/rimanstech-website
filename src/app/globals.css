@@ -34,6 +34,9 @@
   --charcoal: #1e201f;
   --border-light: #2a2d2b;
   --border-dark: #3a3d3b;
+  --forest: #8aab96;
+  --forest-hover: #a5c4b0;
+  --sage: #9eb5a1;
   --accent-subtle: #1a221e;
   --assistant-bg: #222522;
   --secondary-border: #4a4e4b;
@@ -120,4 +123,94 @@ body {
 
 .dark .image-editorial {
   filter: saturate(0.82) contrast(1.06) brightness(0.92);
+}
+
+/* Header wordmark " archive SVG, width-driven scaling */
+.logo-header {
+  display: block;
+  height: auto;
+  width: 132px;
+}
+
+@media (min-width: 768px) {
+  .logo-header {
+    width: 150px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-header {
+    width: 170px;
+  }
+}
+
+
+/* Hero visual - chrome specular sweep across the monogram */
+.hero-monogram {
+  isolation: isolate;
+}
+
+.hero-monogram-sheen {
+  pointer-events: none;
+  position: absolute;
+  inset: -8%;
+  background: linear-gradient(
+    115deg,
+    transparent 36%,
+    rgba(245, 243, 238, 0.05) 46%,
+    rgba(245, 243, 238, 0.18) 50%,
+    rgba(245, 243, 238, 0.05) 54%,
+    transparent 64%
+  );
+  mix-blend-mode: soft-light;
+  transform: translateX(-130%) skewX(-12deg);
+  animation: hero-sheen 7s ease-in-out infinite;
+  /* Keep sheen off the top edge so it doesn't fake a notch */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 100%);
+}
+
+@keyframes hero-sheen {
+  0%,
+  28% {
+    transform: translateX(-130%) skewX(-12deg);
+    opacity: 0;
+  }
+  38% {
+    opacity: 1;
+  }
+  58% {
+    transform: translateX(130%) skewX(-12deg);
+    opacity: 0.85;
+  }
+  70%,
+  100% {
+    transform: translateX(130%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-monogram-sheen {
+    animation: none;
+    display: none;
+  }
+}
+/* Footer hero wordmark */
+.logo-footer {
+  display: block;
+  height: auto;
+  width: min(100%, 300px);
+}
+
+@media (min-width: 768px) {
+  .logo-footer {
+    width: min(100%, 580px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-footer {
+    width: min(100%, 850px);
+  }
 }

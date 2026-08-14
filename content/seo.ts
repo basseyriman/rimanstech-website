@@ -48,7 +48,12 @@ export const pageMetadata = {
   products: {
     title: "Products",
     description:
-      "Technology we build for ourselves — AlzDetect, Young AI Explorers and AI Quest.",
+      "Technology we build for ourselves — AI products spanning healthcare AI, fashion technology, AI education and interactive learning. AlzDetect, VoiceDress, Young AI Explorers and AI Quest.",
+  },
+  work: {
+    title: "RimansTech Selected Work | Software & AI Projects",
+    description:
+      "Explore selected software, platforms and digital products engineered by RimansTech Industries for founders and organisations.",
   },
   industries: {
     title: "Industries",

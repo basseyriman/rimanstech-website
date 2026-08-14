@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Container, Section } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
@@ -30,6 +31,49 @@ export default function CompanyPage() {
             problems — transforming ideas, operational challenges and emerging
             opportunities into well-engineered software and AI products.
           </p>
+        </Container>
+      </Section>
+
+      <Section spacing="compact" bg="porcelain">
+        <Container size="reading">
+          <h2 className="text-2xl font-medium text-carbon">Two Ways We Build</h2>
+          <div className="mt-10 grid gap-8 md:grid-cols-2">
+            <div className="rounded-xl border border-border-light bg-page p-8">
+              <p className="text-xs font-medium tracking-[0.12em] text-stone uppercase">
+                01 — Our Products
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-graphite">
+                We create and develop our own technology products across AI,
+                healthcare, education and digital consumer experiences.
+              </p>
+              <ul className="mt-6 space-y-2 text-sm text-graphite">
+                <li>AlzDetect</li>
+                <li>VoiceDress</li>
+                <li>Young AI Explorers</li>
+                <li>AI Quest</li>
+              </ul>
+              <Link href="/products" className="mt-6 inline-block text-sm font-medium text-forest">
+                Explore our products →
+              </Link>
+            </div>
+            <div className="rounded-xl border border-border-light bg-page p-8">
+              <p className="text-xs font-medium tracking-[0.12em] text-stone uppercase">
+                02 — Client Engineering
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-graphite">
+                We work with founders, businesses and organisations to design,
+                engineer and deploy their own digital products.
+              </p>
+              <ul className="mt-6 space-y-2 text-sm text-graphite">
+                <li>Henco Homes</li>
+                <li>Adrielle Studios</li>
+                <li>Waffi Content Studio</li>
+              </ul>
+              <Link href="/work" className="mt-6 inline-block text-sm font-medium text-forest">
+                View selected work →
+              </Link>
+            </div>
+          </div>
         </Container>
       </Section>
 

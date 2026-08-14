@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { getCaseStudy } from "@content/case-studies";
+import { getClientWork } from "@content/client-work";
 
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
@@ -11,10 +11,10 @@ interface Props {
 
 export default async function OpenGraphImage({ params }: Props) {
   const { slug } = await params;
-  const study = getCaseStudy(slug);
+  const project = getClientWork(slug);
 
-  const title = study?.title ?? "RimansTech Industries";
-  const category = study?.category ?? "Case Study";
+  const title = project?.projectName ?? "RimansTech Industries";
+  const category = project?.category ?? "Selected Work";
 
   return new ImageResponse(
     (
@@ -45,7 +45,7 @@ export default async function OpenGraphImage({ params }: Props) {
             {title}
           </div>
         </div>
-        <div style={{ fontSize: 28, color: "#c8c2b8" }}>RimansTech Industries</div>
+        <div style={{ fontSize: 28, color: "#c8c2b8" }}>Built by RimansTech</div>
       </div>
     ),
     { ...size }

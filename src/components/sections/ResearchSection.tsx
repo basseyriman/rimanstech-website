@@ -52,7 +52,7 @@ export function ResearchSection() {
                 diagnosis.
               </p>
               <Link
-                href="/work/alzdetect"
+                href="/products/alzdetect"
                 className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-sage transition-colors hover:text-ivory"
               >
                 View AlzDetect research

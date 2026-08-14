@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Container, Section } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { RevealOnScroll, RevealItem } from "@/components/motion/FadeIn";
+import { ServiceProof } from "@/components/ui/ServiceProof";
 import { services } from "@content/services";
 
 export function ServicesSection() {
@@ -40,6 +41,9 @@ export function ServicesSection() {
                         {service.cta.label}
                         <ArrowRight className="h-4 w-4" />
                       </Link>
+                    )}
+                    {service.examples && (
+                      <ServiceProof label={service.examples.label} items={service.examples.items} />
                     )}
                   </div>
                   <ul className="grid flex-1 grid-cols-1 gap-2 sm:grid-cols-2">

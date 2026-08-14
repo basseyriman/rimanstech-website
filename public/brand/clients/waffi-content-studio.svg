@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 32" fill="none" role="img" aria-label="Waffi Content Studio">
+  <title>Waffi Content Studio</title>
+  <text
+    x="0"
+    y="23"
+    fill="#F5F3EE"
+    font-family="Geist, Inter, system-ui, sans-serif"
+    font-size="22"
+    font-weight="700"
+    letter-spacing="-0.03em"
+  >
+    waffi
+  </text>
+  <text
+    x="62"
+    y="23"
+    fill="#F5F3EE"
+    opacity="0.82"
+    font-family="Geist, Inter, system-ui, sans-serif"
+    font-size="9.5"
+    font-weight="500"
+    letter-spacing="0.2em"
+  >
+    CONTENT STUDIO
+  </text>
+</svg>

@@ -1,0 +1,1 @@
+export { ProductShowcasePanel } from "./ProductShowcasePanel";

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 40" fill="none" role="img" aria-label="Waffi Enterprise Limited">
+  <title>Waffi Enterprise Limited</title>
+  <rect x="0" y="4" width="32" height="32" rx="8" fill="#F5F3EE" fill-opacity="0.12"/>
+  <path
+    d="M6 12h4.2l2.4 8.4L15 12h3.6l2.5 8.4L23.5 12H28l-5.1 16.5h-3.8l-2.6-8.8L13.1 28.5H9.3L6 12z"
+    fill="#F5F3EE"
+  />
+  <text
+    x="42"
+    y="21"
+    fill="#F5F3EE"
+    font-family="Geist, Inter, system-ui, sans-serif"
+    font-size="15"
+    font-weight="600"
+    letter-spacing="0.06em"
+  >
+    WAFFI
+  </text>
+  <text
+    x="42"
+    y="34"
+    fill="#F5F3EE"
+    fill-opacity="0.72"
+    font-family="Geist, Inter, system-ui, sans-serif"
+    font-size="8.5"
+    font-weight="500"
+    letter-spacing="0.2em"
+  >
+    ENTERPRISE LIMITED
+  </text>
+</svg>
