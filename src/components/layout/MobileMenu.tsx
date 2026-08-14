@@ -87,8 +87,9 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               );
             }
 
-            const menu = NAV_DROPDOWNS[link.label];
-            const isOpen = openSection === link.label;
+            const dropdownKey = link.label as NavDropdownKey;
+            const menu = NAV_DROPDOWNS[dropdownKey];
+            const isOpen = openSection === dropdownKey;
 
             return (
               <div key={link.href} className="rounded-lg">
@@ -96,7 +97,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                   type="button"
                   onClick={() =>
                     setOpenSection((current) =>
-                      current === link.label ? null : link.label
+                      current === dropdownKey ? null : dropdownKey
                     )
                   }
                   className="flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-left text-base font-medium text-carbon transition-colors hover:bg-accent-subtle"
